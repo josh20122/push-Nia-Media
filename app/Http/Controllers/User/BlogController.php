@@ -87,7 +87,7 @@ class BlogController extends Controller
         $imageName = $user->id . "{$blog->title}-image-" . time() . '.webp';
         $thumbnailName = $user->id . "{$blog->title}-thumbnail-" . time() . '.webp';
 
-        Image::make($image)->fit(1000, 200)->encode('webp', 25)->save(public_path("/images/{$imageName}"));
+        Image::make($image)->fit(1000, 300)->encode('webp', 25)->save(public_path("/images/{$imageName}"));
         Image::make($image)->fit(500, 300)->encode('webp', 25)->save(public_path("/images/{$thumbnailName}"));
 
         $blogModel = Blog::find($blog->id);
@@ -182,7 +182,7 @@ class BlogController extends Controller
                 ->where('imageable_type', 'App\Models\Blog')
                 ->oldest()
                 ->get()->pluck('id');
-            Image::make($image)->fit(1000, 200)->encode('webp', 25)->save(public_path("/images/{$imageName}"));
+            Image::make($image)->fit(1000, 300)->encode('webp', 25)->save(public_path("/images/{$imageName}"));
             Image::make($image)->fit(500, 300)->encode('webp', 25)->save(public_path("/images/{$thumbnailName}"));
             ModelsImage::whereId($imageIds[0])
                 ->update([
