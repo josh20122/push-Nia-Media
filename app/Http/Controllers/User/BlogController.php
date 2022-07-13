@@ -208,6 +208,7 @@ class BlogController extends Controller
     {
         $blogId = (int) $id;
         Blog::query()->find($blogId)->delete();
+         BlogCacheJob::dispatch();
         return back();
     }
 }
