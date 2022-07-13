@@ -66,7 +66,7 @@ class BlogController extends Controller
             return back()->withErrors(['image', 'Image size must be less than 2048Kb']);
         }
         $request->validate([
-            'image' => 'required|image|mimes:png,jpg,jpeg|max:2040',
+            'image' => 'required|image|max:2040',
             'content' => 'required|string',
             'title' => 'required|string|unique:blogs,title',
             'tags' => 'required|max:6',
@@ -154,7 +154,7 @@ class BlogController extends Controller
             return back()->withErrors(['image', 'Image size must be less than 2048Kb']);
         }
         $request->validate([
-            'image' => 'nullable|image|mimes:png,jpg,jpeg|max:2040',
+            'image' => 'nullable|image|max:2040',
             'content' => 'required|string',
             'title' => 'required|string',
             'status' => 'required|boolean',
